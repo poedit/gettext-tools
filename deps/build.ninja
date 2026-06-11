@@ -276,11 +276,11 @@ rule gettext_build
       && echo $
       'note: ⋯  $
       rm -f $
-      $destdir/bin/{autopoint,envsubst,gettext*,ngettext,recode-sr-latin}' $
+      $destdir/42/Helpers/{autopoint,envsubst,gettext*,ngettext,recode-sr-latin}' $
       && $
       tmp=`mktemp` $
       && rm -f $
-      $destdir/bin/{autopoint,envsubst,gettext*,ngettext,recode-sr-latin} $
+      $destdir/42/Helpers/{autopoint,envsubst,gettext*,ngettext,recode-sr-latin} $
       >$$tmp 2>&1 $
       || (cat $
       $$tmp ; $
@@ -289,16 +289,33 @@ rule gettext_build
       && echo $
       'note: ⋯  $
       "$top_srcdir/../macos/fixup-dylib-deps.sh" $
-      /lib @rpath $
-      $destdir/lib $
-      $destdir/bin/*' $
+      /42/Frameworks $
+      @rpath $
+      $destdir/42/Frameworks $
+      $destdir/42/Helpers/*' $
       && $
       tmp=`mktemp` $
       && $
       "$top_srcdir/../macos/fixup-dylib-deps.sh" $
-      /lib @rpath $
-      $destdir/lib $
-      $destdir/bin/* $
+      /42/Frameworks $
+      @rpath $
+      $destdir/42/Frameworks $
+      $destdir/42/Helpers/* $
+      >$$tmp 2>&1 $
+      || (cat $
+      $$tmp ; $
+      exit 1) && $
+      rm -f $$tmp $
+      && echo $
+      'note: ⋯  $
+      mv $
+      $destdir/42/* $
+      $destdir/' $
+      && $
+      tmp=`mktemp` $
+      && mv $
+      $destdir/42/* $
+      $destdir/ $
       >$$tmp 2>&1 $
       || (cat $
       $$tmp ; $
@@ -308,12 +325,12 @@ rule gettext_build
       'note: ⋯  $
       strip -S -u $
       -r $
-      $destdir/bin/{msgfmt,msgmerge,msgunfmt,msgcat,xgettext}' $
+      $destdir/Helpers/{msgfmt,msgmerge,msgunfmt,msgcat,xgettext}' $
       && $
       tmp=`mktemp` $
       && strip -S $
       -u -r $
-      $destdir/bin/{msgfmt,msgmerge,msgunfmt,msgcat,xgettext} $
+      $destdir/Helpers/{msgfmt,msgmerge,msgunfmt,msgcat,xgettext} $
       >$$tmp 2>&1 $
       || (cat $
       $$tmp ; $
@@ -322,12 +339,12 @@ rule gettext_build
       && echo $
       'note: ⋯  $
       strip -S -x $
-      $destdir/lib/lib*.*.dylib' $
+      $destdir/Frameworks/lib*.*.dylib' $
       && $
       tmp=`mktemp` $
       && strip -S $
       -x $
-      $destdir/lib/lib*.*.dylib $
+      $destdir/Frameworks/lib*.*.dylib $
       >$$tmp 2>&1 $
       || (cat $
       $$tmp ; $
@@ -373,7 +390,10 @@ build $
       ./configure
   configure_flags $
       = $
-      --prefix=/ $
+      --prefix=/42 $
+      --bindir=/42/Helpers $
+      --libdir=/42/Frameworks $
+      --datarootdir=/42/Resources $
       CC=$cc $
       CXX=$cxx $
       am_cv_func_iconv_works=yes $

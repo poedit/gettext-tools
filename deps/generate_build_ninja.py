@@ -118,7 +118,10 @@ with open('build.ninja', 'w') as buildfile:
                                  patches=glob('gettext/*.patch'),
                                  configure='./configure',
                                  flags=[
-                                     '--prefix=/',
+                                     '--prefix=/42',
+                                     '--bindir=/42/Helpers',
+                                     '--libdir=/42/Frameworks',
+                                     '--datarootdir=/42/Resources',
                                      'CC=$cc',
                                      'CXX=$cxx',
                                      # GNU gettext checks against and won't use macOS-provided iconv(), see here:
@@ -162,12 +165,14 @@ with open('build.ninja', 'w') as buildfile:
                                      'touch `find . -name *.gmo`',
                                  ] + default_build_commands + [
                                      # delete unwanted stuff
-                                     'rm -f $destdir/bin/{autopoint,envsubst,gettext*,ngettext,recode-sr-latin}',
+                                     'rm -f $destdir/42/Helpers/{autopoint,envsubst,gettext*,ngettext,recode-sr-latin}',
                                      # fix dylib references to work
-                                     '"$top_srcdir/../macos/fixup-dylib-deps.sh" /lib @rpath $destdir/lib $destdir/bin/*',
+                                     '"$top_srcdir/../macos/fixup-dylib-deps.sh" /42/Frameworks @rpath $destdir/42/Frameworks $destdir/42/Helpers/*',
+                                     # move files
+                                     'mv $destdir/42/* $destdir/',
                                      # strip executables
-                                     'strip -S -u -r $destdir/bin/{msgfmt,msgmerge,msgunfmt,msgcat,xgettext}',
-                                     'strip -S -x $destdir/lib/lib*.*.dylib',
+                                     'strip -S -u -r $destdir/Helpers/{msgfmt,msgmerge,msgunfmt,msgcat,xgettext}',
+                                     'strip -S -x $destdir/Frameworks/lib*.*.dylib',
                                  ]))
 
     n.default(targets)

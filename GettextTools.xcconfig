@@ -1,0 +1,7 @@
+
+GETTEXT_VERSION = 0.26
+
+GETTEXT_BINARIES = msgcat msgfmt msgunfmt msguniq msgmerge xgettext
+
+MARKETING_VERSION = $(GETTEXT_VERSION)
+
