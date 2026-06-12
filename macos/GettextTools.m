@@ -1,15 +1,20 @@
 //
-//  GettextTools.c
+//  GettextTools.m
 //  GettextTools
 //
 //  This file is in public domain.
 //
 
+#import "GettextTools.h"
 
-// Xcode has issues with signing plugins/bundles that don't actually have
-// a binary in them. To work around this limitation, create a tiny dummy
-// plugin binary with a dummy function in it.
-int lets_keep_xcode_codesigning_happy_la_la_la(void)
+@interface GettextToolsBundleLocator : NSObject
+@end
+
+@implementation GettextToolsBundleLocator
+@end
+
+NSString *GettextToolsPathForTool(NSString *toolName)
 {
-    return 42;
+    NSBundle *bundle = [NSBundle bundleForClass:GettextToolsBundleLocator.class];
+    return [bundle pathForAuxiliaryExecutable:toolName];
 }
