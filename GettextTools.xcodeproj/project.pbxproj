@@ -239,7 +239,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B2A705F32FDABA8000DCE685 /* GettextTools.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
@@ -293,14 +292,6 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					deps/custom_build/config,
-					deps/wx/include,
-					deps/lucene,
-					deps/lucene/LucenePlusPlus/include,
-					deps/cld2,
-					"$(inherited)",
-				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -311,7 +302,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B2A705F32FDABA8000DCE685 /* GettextTools.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_DEBUG_INFORMATION_LEVEL = "line-tables-only";
@@ -364,14 +354,6 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					deps/custom_build/config,
-					deps/wx/include,
-					deps/lucene,
-					deps/lucene/LucenePlusPlus/include,
-					deps/cld2,
-					"$(inherited)",
-				);
 				LLVM_LTO = YES_THIN;
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				SDKROOT = macosx;
