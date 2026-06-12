@@ -8,10 +8,9 @@
 #
 # Both the binaries and dylibs in <dylibs_dir> are modified
 #
-# For example, Gettext binaries are build with //lib prefix by build/deps.xml,
-# see:
-#   $ otool -L deps/bin-macos/Debug/gettext/bin/xgettext
-#   deps/bin-macos/Debug/gettext/bin/xgettext:
+# For example, Gettext binaries are built with a /lib prefix:
+#   $ otool -L "$DEPS_BUILD_DIR/gettext/Helpers/xgettext"
+#   $DEPS_BUILD_DIR/gettext/Helpers/xgettext:
 #   	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 744.18.0)
 #   	/lib/libgettextsrc-0.18.3.dylib (compatibility version 0.0.0, current version 0.0.0)
 #   	/lib/libgettextlib-0.18.3.dylib (compatibility version 0.0.0, current version 0.0.0)
@@ -25,13 +24,13 @@
 # To fix this, run this script as follow:
 #
 #   fixup-dylib-deps.sh "/lib" "@rpath" \
-#                       deps/bin-macos/Debug/gettext/lib \
-#                       deps/bin-macos/Debug/gettext/bin/*
+#                       "$DEPS_BUILD_DIR/gettext/Frameworks" \
+#                       "$DEPS_BUILD_DIR/gettext/Helpers"/*
 #
 # Resulting in:
 #
-#   $ otool -L deps/bin-macos/Debug/gettext/bin/xgettext
-#   deps/bin-macos/Debug/gettext/bin/xgettext:
+#   $ otool -L "$DEPS_BUILD_DIR/gettext/Helpers/xgettext"
+#   $DEPS_BUILD_DIR/gettext/Helpers/xgettext:
 #   	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 744.18.0)
 #   	@rpath/libgettextsrc-0.18.3.dylib (compatibility version 0.0.0, current version 0.0.0)
 #   	@rpath/libgettextlib-0.18.3.dylib (compatibility version 0.0.0, current version 0.0.0)

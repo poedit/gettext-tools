@@ -40,8 +40,14 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Brewfile,
+				"build-xcframework.sh",
+				build.ninja,
+				build.vars.ninja,
+				build_deps.sh,
 				"fixup-dylib-deps.sh",
+				generate_build_ninja.py,
 				"merge-archs.sh",
+				ninja_syntax.py,
 			);
 			publicHeaders = (
 				GettextTools.h,
@@ -212,7 +218,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd deps && ./build_deps.sh gettext\n";
+			shellScript = "cd macos && ./build_deps.sh gettext\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

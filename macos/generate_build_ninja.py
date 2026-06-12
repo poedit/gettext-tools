@@ -76,7 +76,7 @@ def gen_configure(n, prj, tarball=None, patches=[], srcdir=None, configure='conf
 
     configure_commands = list(gen_pre_build_commands(tarball, patches, srcdir)) + commands + post_build_commands
     n.rule('%s_build' % prj,
-           description='Building deps/$name...',
+           description='Building $name...',
            pool='console',
            command=' && '.join(emit_commands(configure_commands)))
     n.build([target],
@@ -167,7 +167,7 @@ with open('build.ninja', 'w') as buildfile:
                                      # delete unwanted stuff
                                      'rm -f $destdir/42/Helpers/{autopoint,envsubst,gettext*,ngettext,recode-sr-latin}',
                                      # fix dylib references to work
-                                     '"$top_srcdir/../macos/fixup-dylib-deps.sh" /42/Frameworks @rpath $destdir/42/Frameworks $destdir/42/Helpers/*',
+                                     '"$top_srcdir/fixup-dylib-deps.sh" /42/Frameworks @rpath $destdir/42/Frameworks $destdir/42/Helpers/*',
                                      # move files
                                      'mv $destdir/42/* $destdir/',
                                      # strip executables

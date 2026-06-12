@@ -305,7 +305,7 @@ rule gettext_build
       rm -f $$tmp $
       && echo $
       'note: ⋯  $
-      "$top_srcdir/../macos/fixup-dylib-deps.sh" $
+      "$top_srcdir/fixup-dylib-deps.sh" $
       /42/Frameworks $
       @rpath $
       $destdir/42/Frameworks $
@@ -313,7 +313,7 @@ rule gettext_build
       && $
       tmp=`mktemp` $
       && $
-      "$top_srcdir/../macos/fixup-dylib-deps.sh" $
+      "$top_srcdir/fixup-dylib-deps.sh" $
       /42/Frameworks $
       @rpath $
       $destdir/42/Frameworks $
@@ -395,7 +395,7 @@ rule gettext_build
       rm -f $$tmp
   description = $
       Building $
-      deps/$name...
+      $name...
   pool = console
 build $
     $intdir/gettext.done: $

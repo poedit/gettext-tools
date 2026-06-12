@@ -112,4 +112,4 @@ EOT
     ninja -f $xcode_ninja_file $1
 done
 
-../macos/merge-archs.sh "$DEPS_BUILD_DIR/$1"
+./merge-archs.sh "$DEPS_BUILD_DIR/$1"
