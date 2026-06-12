@@ -81,13 +81,30 @@ rule gettext_build
       ⋯  patch -d $
       "$workdir" $
       -p1 < $
-      "$top_srcdir/gettext/gettext-smaller-build.patch"' $
+      "$top_srcdir/../patches/gettext-0.23-pthread_sigmask.patch"' $
       && $
       tmp=`mktemp` $
       && patch -d $
       "$workdir" $
       -p1 < $
-      "$top_srcdir/gettext/gettext-smaller-build.patch" $
+      "$top_srcdir/../patches/gettext-0.23-pthread_sigmask.patch" $
+      >$$tmp 2>&1 $
+      || (cat $
+      $$tmp ; $
+      exit 1) && $
+      rm -f $$tmp $
+      && echo $
+      'note: ⋯  $
+      patch -d $
+      "$workdir" $
+      -p1 < $
+      "$top_srcdir/../patches/gettext-windows_cygpath_w-unc-fix.patch"' $
+      && $
+      tmp=`mktemp` $
+      && patch -d $
+      "$workdir" $
+      -p1 < $
+      "$top_srcdir/../patches/gettext-windows_cygpath_w-unc-fix.patch" $
       >$$tmp 2>&1 $
       || (cat $
       $$tmp ; $
@@ -384,7 +401,8 @@ build $
     $intdir/gettext.done: $
     gettext_build $
     $builddir/gettext-0.26.tar.xz $
-    gettext/gettext-smaller-build.patch
+    ../patches/gettext-0.23-pthread_sigmask.patch $
+    ../patches/gettext-windows_cygpath_w-unc-fix.patch
   name = gettext
   configure = $
       ./configure

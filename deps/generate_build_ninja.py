@@ -115,7 +115,7 @@ with open('build.ninja', 'w') as buildfile:
 
     targets.append(gen_configure(n, 'gettext',
                                  tarball=GETTEXT_TARBALL,
-                                 patches=glob('gettext/*.patch'),
+                                 patches=glob('../patches/*.patch'),
                                  configure='./configure',
                                  flags=[
                                      '--prefix=/42',
