@@ -33,6 +33,7 @@
 /* Begin PBXFileReference section */
 		B2A705E62FDAB55400DCE685 /* GettextTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GettextTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A705F32FDABA8000DCE685 /* GettextTools.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = GettextTools.xcconfig; sourceTree = "<group>"; };
+		B2B1AC402FDD6CEB00AAB1C3 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -75,6 +76,7 @@
 				B24ACD5D16F6201F00399242 /* Frameworks */,
 				B24ACD5C16F6201F00399242 /* Products */,
 				B2A705F32FDABA8000DCE685 /* GettextTools.xcconfig */,
+				B2B1AC402FDD6CEB00AAB1C3 /* Package.swift */,
 			);
 			sourceTree = "<group>";
 		};

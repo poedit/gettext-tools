@@ -12,12 +12,13 @@ name=GettextTools
 build_dir=build/macos
 archive_path="$build_dir/macosx.xcarchive"
 xcframework_path="$build_dir/$name.xcframework"
+package_path="$build_dir/$name-package"
 zip_name="$name.xcframework.zip"
 zip_path="$build_dir/$zip_name"
 url="https://github.com/poedit/gettext-tools/releases/download/$GETTEXT_VERSION/$zip_name"
 
 mkdir -p "$build_dir"
-rm -rf "$archive_path" "$xcframework_path" "$zip_path"
+rm -rf "$archive_path" "$xcframework_path" "$package_path" "$zip_path"
 
 xcodebuild archive \
     -quiet \
@@ -32,9 +33,19 @@ xcodebuild -create-xcframework \
 
 codesign -s "Developer ID" --timestamp "$xcframework_path"
 
+mkdir -p "$package_path/bin"
+cp -a "$xcframework_path" "$package_path/"
+
+helpers_path="$(find "$package_path/$name.xcframework" -path "*/$name.framework/Versions/A/Helpers" -type d -print -quit)"
+helpers_path="${helpers_path#$package_path/}"
 (
-    cd "$build_dir"
-    ditto -c -k --sequesterRsrc --keepParent "$name.xcframework" "$zip_name"
+    cd "$package_path/bin"
+    ln -s "../$helpers_path"/* .
+)
+
+(
+    cd "$package_path"
+    ditto -c -k --sequesterRsrc . "../$zip_name"
 )
 
 checksum="$(swift package compute-checksum "$zip_path")"
