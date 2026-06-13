@@ -108,7 +108,7 @@ trap "exit 0" INT
 
 for ARCH in $ARCHS; do
     INTDIR="$DEPS_BUILD_DIR/_intermediate.$ARCH"
-    WORKDIR="$INTDIR/$target.$ARCH"
+    WORKDIR="$INTDIR/$target"
     DESTDIR="$DEPS_BUILD_DIR/$target.$ARCH"
 
     cflags_sdk="-arch $ARCH -isysroot $SDKROOT -mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"

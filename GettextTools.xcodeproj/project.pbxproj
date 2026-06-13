@@ -217,7 +217,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd macos && ./build_deps.sh gettext\ntouch \"${DERIVED_FILE_DIR}/gettext-binaries.done\"\n";
+			shellScript = "set -e\ncd macos\n./build_deps.sh gettext\ntouch \"${DERIVED_FILE_DIR}/gettext-binaries.done\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
