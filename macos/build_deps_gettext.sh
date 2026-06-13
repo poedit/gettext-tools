@@ -95,7 +95,7 @@ find . -name '*.gmo' -exec touch {} +
     am_cv_func_iconv_works=yes \
     gt_cv_func_CFPreferencesCopyAppValue=no \
     gt_cv_func_CFLocaleCopyPreferredLanguages=no \
-    --config-cache \
+    --cache-file=$CONFIG_CACHE \
     --with-libiconv-prefix="$SDKROOT/usr" \
     --with-libxml2-prefix="$SDKROOT/usr" \
     --disable-static \
