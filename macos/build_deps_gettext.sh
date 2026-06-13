@@ -115,6 +115,8 @@ rm -f \
     "$DESTDIR"/42/Helpers/envsubst \
     "$DESTDIR"/42/Helpers/gettext* \
     "$DESTDIR"/42/Helpers/ngettext \
+    "$DESTDIR"/42/Helpers/po-fetch \
+    "$DESTDIR"/42/Helpers/spit \
     "$DESTDIR"/42/Helpers/recode-sr-latin
 
 # Fix dylib references to work inside the framework.
