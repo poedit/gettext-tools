@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B27115F9170830A800B936D5 /* Build configuration list for PBXAggregateTarget "deps.gettext" */;
 			buildPhases = (
-				B2C129D921C6CBAF004364B2 /* Ninja Build */,
+				B2C129D921C6CBAF004364B2 /* Autoconf Build */,
 			);
 			dependencies = (
 			);
@@ -40,14 +40,11 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Brewfile,
-				"build-xcframework.sh",
-				build.ninja,
-				build.vars.ninja,
+				build_deps_gettext.sh,
 				build_deps.sh,
+				"build-xcframework.sh",
 				"fixup-dylib-deps.sh",
-				generate_build_ninja.py,
 				"merge-archs.sh",
-				ninja_syntax.py,
 			);
 			publicHeaders = (
 				GettextTools.h,
@@ -201,24 +198,25 @@
 			shellPath = /bin/sh;
 			shellScript = "GETTEXT_ROOT=\"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Home\"\n\nrm -rf \"${GETTEXT_ROOT}\"/*\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Helpers\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gettext\"\n\nfor i in ${GETTEXT_BINARIES}; do\n  cp -a ${DEPS_BUILD_DIR}/gettext/Helpers/$i \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Helpers/\"\ndone\ncp -a ${DEPS_BUILD_DIR}/gettext/Frameworks/lib*.*.dylib \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/\"\n\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/gettext-* \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/gettext/styles \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gettext/\"\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/locale \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n\necho \"${DERIVED_FILE_DIR}/copy-binaries.done\" \" : \" ${DEPS_BUILD_DIR}/gettext/Helpers/* ${DEPS_BUILD_DIR}/gettext/Frameworks/lib*.*.dylib >${DERIVED_FILE_DIR}/copy-binaries.d\ntouch \"${DERIVED_FILE_DIR}/copy-binaries.done\"\n";
 		};
-		B2C129D921C6CBAF004364B2 /* Ninja Build */ = {
+		B2C129D921C6CBAF004364B2 /* Autoconf Build */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/macos/build_deps_gettext.sh",
 			);
-			name = "Ninja Build";
+			name = "Autoconf Build";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/gettext-binaries.done",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd macos && ./build_deps.sh gettext\n";
+			shellScript = "cd macos && ./build_deps.sh gettext\ntouch \"${DERIVED_FILE_DIR}/gettext-binaries.done\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
