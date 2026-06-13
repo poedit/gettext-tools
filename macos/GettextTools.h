@@ -7,4 +7,5 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString *GettextToolsPathForTool(NSString *toolName);
+FOUNDATION_EXPORT NSString *GettextToolsBindirPath(void);
+FOUNDATION_EXPORT NSString *GettextToolsDatadirPath(void);

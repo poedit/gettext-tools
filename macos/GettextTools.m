@@ -13,8 +13,14 @@
 @implementation GettextToolsBundleLocator
 @end
 
-NSString *GettextToolsPathForTool(NSString *toolName)
+NSString *GettextToolsBindirPath(void)
 {
     NSBundle *bundle = [NSBundle bundleForClass:GettextToolsBundleLocator.class];
-    return [bundle pathForAuxiliaryExecutable:toolName];
+    return [bundle.bundlePath stringByAppendingPathComponent:@"Versions/Current/Helpers"];
+}
+
+NSString *GettextToolsDatadirPath(void)
+{
+    NSBundle *bundle = [NSBundle bundleForClass:GettextToolsBundleLocator.class];
+    return bundle.resourcePath;
 }
