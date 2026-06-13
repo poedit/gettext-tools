@@ -207,6 +207,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/macos/build_deps_gettext.sh",
+				"$(SRCROOT)/versions.config",
 			);
 			name = "Autoconf Build";
 			outputFileListPaths = (

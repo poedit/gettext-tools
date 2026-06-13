@@ -2,9 +2,9 @@
 
 set -e
 
-GETTEXT_VERSION=0.26
+. ../versions.config
+
 GETTEXT_TARBALL="gettext-$GETTEXT_VERSION.tar.xz"
-GETTEXT_SHA256=d1fb86e260cfe7da6031f94d2e44c0da55903dbae0a2fa0fae78c91ae1b56f00
 GETTEXT_URL="https://ftpmirror.gnu.org/gnu/gettext/$GETTEXT_TARBALL"
 GETTEXT_DOWNLOAD="$DEPS_BUILD_DIR/$GETTEXT_TARBALL"
 
