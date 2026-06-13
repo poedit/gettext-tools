@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <GettextTools/GettextTools.h>
 
 @interface GettextToolsTests : XCTestCase
 
@@ -14,24 +15,37 @@
 
 @implementation GettextToolsTests
 
-- (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+- (void)testDatadirPathContainsLocaleResources
+{
+    NSString *datadirPath = GettextToolsDatadirPath();
+    XCTAssertNotNil(datadirPath);
+
+    NSFileManager *fileManager = NSFileManager.defaultManager;
+
+    BOOL isDirectory = NO;
+    NSString *localePath = [datadirPath stringByAppendingPathComponent:@"locale"];
+    XCTAssertTrue([fileManager fileExistsAtPath:localePath isDirectory:&isDirectory]);
+    XCTAssertTrue(isDirectory);
+
+    NSString *catalogPath = [localePath stringByAppendingPathComponent:@"de/LC_MESSAGES/gettext-tools.mo"];
+    isDirectory = NO;
+    XCTAssertTrue([fileManager fileExistsAtPath:catalogPath isDirectory:&isDirectory]);
+    XCTAssertFalse(isDirectory);
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-}
+- (void)testBindirPathContainsMsgfmt
+{
+    NSString *bindirPath = GettextToolsBindirPath();
+    XCTAssertNotNil(bindirPath);
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
+    BOOL isDirectory = NO;
+    XCTAssertTrue([NSFileManager.defaultManager fileExistsAtPath:bindirPath isDirectory:&isDirectory]);
+    XCTAssertTrue(isDirectory);
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    NSString *msgfmtPath = [bindirPath stringByAppendingPathComponent:@"msgfmt"];
+    isDirectory = NO;
+    XCTAssertTrue([NSFileManager.defaultManager fileExistsAtPath:msgfmtPath isDirectory:&isDirectory]);
+    XCTAssertFalse(isDirectory);
 }
 
 @end
