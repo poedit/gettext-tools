@@ -15,7 +15,7 @@ xcframework_path="$build_dir/$name.xcframework"
 package_path="$build_dir/$name-package"
 zip_name="$name.xcframework.zip"
 zip_path="$build_dir/$zip_name"
-url="https://github.com/poedit/gettext-tools/releases/download/$GETTEXT_VERSION/$zip_name"
+url="https://github.com/poedit/gettext-tools/releases/download/v$GETTEXT_VERSION/$zip_name"
 
 mkdir -p "$build_dir"
 rm -rf "$archive_path" "$xcframework_path" "$package_path" "$zip_path"
