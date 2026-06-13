@@ -6,7 +6,7 @@
         <title>GNU gettext tools for Windows</title>
         <authors>Vaclav Slavik</authors>
         <license type="expression">GPL-3.0-or-later</license>
-        <projectUrl>https://github.com/vslavik/gettext-tools-windows</projectUrl>
+        <projectUrl>https://github.com/poedit/gettext-tools</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Windows build of GNU gettext tools (msgfmt, xgettext etc.), maintained by Poedit developer.</description>
         <copyright>Copyright (C) Free Software Foundation, Inc. {http://fsf.org/}</copyright>
