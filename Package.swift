@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "GettextTools",
-            url: "https://github.com/poedit/gettext-tools/releases/download/0.26/GettextTools.xcframework.zip",
-            checksum: "0000000000000000000000000000000000000000000000000000000000000000"
+            url: "https://download.poedit.com/tmp/GettextTools-1.0-2.xcframework.zip",
+            checksum: "7bfa5a1efb2fd903fc8f65bf699bb4a81766feedae9183cac595d63652d526f2"
         ),
     ]
 )
