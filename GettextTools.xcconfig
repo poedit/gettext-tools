@@ -1,0 +1,5 @@
+#include "versions.config"
+
+GETTEXT_BINARIES = msgcat msgfmt msgunfmt msguniq msgmerge xgettext
+
+MARKETING_VERSION = $(GETTEXT_VERSION)

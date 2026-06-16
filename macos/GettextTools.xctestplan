@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "B2B1AC7A-2FDD-9CDA-00AA-B1C300000001",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:GettextTools.xcodeproj",
+      "identifier" : "B2A705E52FDAB55400DCE685",
+      "name" : "GettextTools"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:GettextTools.xcodeproj",
+        "identifier" : "B2B1AC672FDD9CDA00AAB1C3",
+        "name" : "GettextToolsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

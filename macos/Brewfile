@@ -1,0 +1,5 @@
+brew "bison"
+brew "gnu-sed"
+brew "libtool"
+brew "automake"
+brew "make"

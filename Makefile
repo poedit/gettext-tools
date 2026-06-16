@@ -1,9 +1,4 @@
-
-GETTEXT_VERSION   = 1.0
-GETTEXT_SHA256    = 71132a3fb71e68245b8f2ac4e9e97137d3e5c02f415636eb508ae607bc01add7
-
-LIBICONV_VERSION  = 1.19
-LIBICONV_SHA256   = 88dd96a8c0464eca144fc791ae60cd31cd8ee78321e67397e25fc095c4a19aa6
+include versions.config
 
 # version of the gettext-tools-windows package; usually same as GETTEXT_VERSION
 # use "-n" suffix; for NuGet, use ".n" suffix instead, e.g. 0.20.1-1 and 0.20.1.1
