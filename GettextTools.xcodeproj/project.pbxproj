@@ -147,7 +147,7 @@
 				B2A705E22FDAB55400DCE685 /* Sources */,
 				B2A705E32FDAB55400DCE685 /* Frameworks */,
 				B2A705E42FDAB55400DCE685 /* Resources */,
-				B2A705F12FDAB59200DCE685 /* Copy Gettext binaries, data files & translations */,
+				B2A705F12FDAB59200DCE685 /* Copy & sign Gettext binaries, data files & translations */,
 			);
 			buildRules = (
 			);
@@ -242,7 +242,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B2A705F12FDAB59200DCE685 /* Copy Gettext binaries, data files & translations */ = {
+		B2A705F12FDAB59200DCE685 /* Copy & sign Gettext binaries, data files & translations */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			dependencyFile = "$(DERIVED_FILES_DIR)/copy-binaries.d";
@@ -252,7 +252,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Copy Gettext binaries, data files & translations";
+			name = "Copy & sign Gettext binaries, data files & translations";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -260,7 +260,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GETTEXT_ROOT=\"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Home\"\n\nrm -rf \"${GETTEXT_ROOT}\"/*\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Helpers\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gettext\"\n\nfor i in ${GETTEXT_BINARIES}; do\n  cp -a ${DEPS_BUILD_DIR}/gettext/Helpers/$i \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Helpers/\"\ndone\ncp -a ${DEPS_BUILD_DIR}/gettext/Frameworks/lib*.*.dylib \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/\"\n\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/gettext-* \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/gettext/styles \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gettext/\"\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/locale \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n\necho \"${DERIVED_FILE_DIR}/copy-binaries.done\" \" : \" ${DEPS_BUILD_DIR}/gettext/Helpers/* ${DEPS_BUILD_DIR}/gettext/Frameworks/lib*.*.dylib >${DERIVED_FILE_DIR}/copy-binaries.d\ntouch \"${DERIVED_FILE_DIR}/copy-binaries.done\"\n";
+			shellScript = "GETTEXT_ROOT=\"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Home\"\n\nrm -rf \"${GETTEXT_ROOT}\"/*\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Helpers\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gettext\"\n\nfor i in ${GETTEXT_BINARIES}; do\n  cp -a ${DEPS_BUILD_DIR}/gettext/Helpers/$i \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Helpers/\"\ndone\ncp -a ${DEPS_BUILD_DIR}/gettext/Frameworks/lib*.*.dylib \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/\"\n\nif [ \"$EXPANDED_CODE_SIGN_IDENTITY\" != \"\" ]; then\n  codesign --force --sign \"$EXPANDED_CODE_SIGN_IDENTITY\" \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/\"*.dylib \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}/Helpers/\"*\nfi\n\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/gettext-* \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/gettext/styles \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gettext/\"\ncp -a ${DEPS_BUILD_DIR}/gettext/Resources/locale \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\n\necho \"${DERIVED_FILE_DIR}/copy-binaries.done\" \" : \" ${DEPS_BUILD_DIR}/gettext/Helpers/* ${DEPS_BUILD_DIR}/gettext/Frameworks/lib*.*.dylib >${DERIVED_FILE_DIR}/copy-binaries.d\ntouch \"${DERIVED_FILE_DIR}/copy-binaries.done\"\n";
 		};
 		B2C129D921C6CBAF004364B2 /* Autoconf Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -350,7 +350,6 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPS_BUILD_DIR = "$(OBJROOT)/Deps.build/$(CONFIGURATION)";
-				DEVELOPMENT_TEAM = 9CD9R98CLE;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -411,7 +410,6 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPS_BUILD_DIR = "$(OBJROOT)/Deps.build/$(CONFIGURATION)";
-				DEVELOPMENT_TEAM = 9CD9R98CLE;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -478,13 +476,11 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -536,13 +532,11 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

@@ -31,8 +31,6 @@ xcodebuild -create-xcframework \
     -archive "$archive_path" \
     -framework "$name.framework"
 
-codesign -s "Developer ID" --timestamp "$xcframework_path"
-
 mkdir -p "$package_path/bin"
 cp -a "$xcframework_path" "$package_path/"
 
