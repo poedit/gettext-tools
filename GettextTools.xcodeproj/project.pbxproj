@@ -53,6 +53,7 @@
 		B2B1AC722FDD9D8300AAB1C3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				GettextTools.xctestplan,
 				GettextToolsTests.m,
 			);
 			target = B2B1AC672FDD9CDA00AAB1C3 /* GettextToolsTests */;
@@ -65,6 +66,7 @@
 				build_deps.sh,
 				"build-xcframework.sh",
 				"fixup-dylib-deps.sh",
+				GettextTools.xctestplan,
 				GettextToolsTests.m,
 				"merge-archs.sh",
 			);
