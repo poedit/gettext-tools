@@ -50,10 +50,10 @@ ARCHIVE_FILE = $(BUILDDIR)/gettext-tools-windows-$(PACKAGE_VERSION).zip
 NUGET_FILE   = $(BUILDDIR)/Gettext.Tools.$(NUGET_VERSION).nupkg
 
 LIBICONV_FILE := libiconv-$(LIBICONV_VERSION).tar.gz
-LIBICONV_URL  := http://ftpmirror.gnu.org/gnu/libiconv/$(LIBICONV_FILE)
+LIBICONV_URL  := http://mirrors.kernel.org/gnu/libiconv/$(LIBICONV_FILE)
 
 GETTEXT_FILE := gettext-$(GETTEXT_VERSION).tar.xz
-GETTEXT_URL  := http://ftpmirror.gnu.org/gnu/gettext/$(GETTEXT_FILE)
+GETTEXT_URL  := http://mirrors.kernel.org/gnu/gettext/$(GETTEXT_FILE)
 
 LIBICONV_DOWNLOAD := $(DOWNLOADDIR)/$(LIBICONV_FILE)
 LIBICONV_COMPILE  := $(COMPILEDIR)/LIBICONV.built

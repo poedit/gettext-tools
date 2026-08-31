@@ -5,7 +5,7 @@ set -e
 . ../versions.config
 
 GETTEXT_TARBALL="gettext-$GETTEXT_VERSION.tar.xz"
-GETTEXT_URL="https://ftpmirror.gnu.org/gnu/gettext/$GETTEXT_TARBALL"
+GETTEXT_URL="https://mirrors.kernel.org/gnu/gettext/$GETTEXT_TARBALL"
 GETTEXT_DOWNLOAD="$DEPS_BUILD_DIR/$GETTEXT_TARBALL"
 
 download_gettext() {
